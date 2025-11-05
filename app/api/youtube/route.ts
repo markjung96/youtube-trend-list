@@ -30,10 +30,7 @@ export async function GET(request: NextRequest) {
     const apiKey = process.env.YOUTUBE_API_KEY;
 
     if (!apiKey) {
-      return NextResponse.json(
-        { error: "YouTube API key is not configured" },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: "YouTube API key is not configured" }, { status: 500 });
     }
 
     // 1. 인기 영상 검색 (mostPopular)
@@ -52,13 +49,11 @@ export async function GET(request: NextRequest) {
     const data = await searchResponse.json();
 
     // 조회수 기준으로 정렬
-    const videos = (data.items || []).sort(
-      (a: YouTubeVideo, b: YouTubeVideo) => {
-        const aViews = parseInt(a.statistics?.viewCount || "0");
-        const bViews = parseInt(b.statistics?.viewCount || "0");
-        return bViews - aViews;
-      }
-    );
+    const videos = (data.items || []).sort((a: YouTubeVideo, b: YouTubeVideo) => {
+      const aViews = parseInt(a.statistics?.viewCount || "0");
+      const bViews = parseInt(b.statistics?.viewCount || "0");
+      return bViews - aViews;
+    });
 
     return NextResponse.json({
       videos: videos.map((video: YouTubeVideo) => ({
@@ -77,10 +72,6 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     console.error("YouTube API Error:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch YouTube videos" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to fetch YouTube videos" }, { status: 500 });
   }
 }
-
