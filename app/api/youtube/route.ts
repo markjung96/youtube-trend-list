@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
+// 동적 라우트로 설정 (searchParams 사용)
+export const dynamic = "force-dynamic";
+
 interface YouTubeVideo {
   id: string;
   snippet: {
