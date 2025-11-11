@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Video } from "@/lib/types";
 import { formatNumber, formatDate } from "@/lib/utils";
+import { ThumbsUp, MessageCircle } from "lucide-react";
 
 interface VideoCardProps {
   video: Video;
@@ -36,9 +37,15 @@ export function VideoCard({ video }: VideoCardProps) {
           <span>조회수 {formatNumber(video.viewCount)}</span>
           <span>{formatDate(video.publishedAt)}</span>
         </div>
-        <div className="flex items-center gap-4 mt-2 text-xs text-gray-500 dark:text-gray-500">
-          <span>👍 {formatNumber(video.likeCount)}</span>
-          <span>💬 {formatNumber(video.commentCount)}</span>
+        <div className="flex items-center gap-4 mt-2 text-xs text-muted-foreground">
+          <span className="flex items-center gap-1">
+            <ThumbsUp className="h-3 w-3" />
+            {formatNumber(video.likeCount)}
+          </span>
+          <span className="flex items-center gap-1">
+            <MessageCircle className="h-3 w-3" />
+            {formatNumber(video.commentCount)}
+          </span>
         </div>
       </div>
     </a>
