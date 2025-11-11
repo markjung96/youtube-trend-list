@@ -1,20 +1,20 @@
 import type React from "react";
-import { 
-  Tv, 
-  Film, 
-  Car, 
-  Music, 
-  Heart, 
-  Trophy, 
-  Gamepad2, 
-  Plane, 
-  Laugh, 
-  Theater, 
-  Newspaper, 
-  Sparkles, 
-  GraduationCap, 
-  Microscope, 
-  HandHeart 
+import {
+  Tv,
+  Film,
+  Car,
+  Music,
+  Heart,
+  Trophy,
+  Gamepad2,
+  Plane,
+  Laugh,
+  Theater,
+  Newspaper,
+  Sparkles,
+  GraduationCap,
+  Microscope,
+  HandHeart,
 } from "lucide-react";
 
 export interface VideoCategory {
@@ -40,4 +40,3 @@ export const VIDEO_CATEGORIES: VideoCategory[] = [
   { id: "28", name: "과학 & 기술", icon: Microscope },
   { id: "29", name: "비영리", icon: HandHeart },
 ];
-

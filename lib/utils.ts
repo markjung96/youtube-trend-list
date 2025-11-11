@@ -6,14 +6,19 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatNumber(num: number): string {
-  if (num >= 1000000000) {
-    return (num / 1000000000).toFixed(1) + "B";
+  // 1억 이상
+  if (num >= 100000000) {
+    const eok = num / 100000000;
+    return eok.toFixed(1).replace(/\.0$/, "") + "억";
   }
-  if (num >= 1000000) {
-    return (num / 1000000).toFixed(1) + "M";
+  // 1만 이상
+  if (num >= 10000) {
+    const man = num / 10000;
+    return man.toFixed(1).replace(/\.0$/, "") + "만";
   }
+  // 1천 이상 - 쉼표 추가
   if (num >= 1000) {
-    return (num / 1000).toFixed(1) + "K";
+    return num.toLocaleString("ko-KR");
   }
   return num.toString();
 }
